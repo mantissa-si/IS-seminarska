@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +37,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::resource('player', PlayerController::class)
+    ->only(['index', 'store', 'create'])
+    ->middleware(['auth', 'verified']);
+
+Route::resource('team', TeamController::class)
+    ->only(['index', 'store', 'create'])
+    ->middleware(['auth', 'verified']);
+
+require __DIR__ . '/auth.php';
