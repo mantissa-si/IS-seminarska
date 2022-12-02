@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Team;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -15,7 +16,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Team/Index', []);
     }
 
     /**
@@ -37,12 +38,12 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|255',
+            'name' => 'required|string|max:255',
         ]);
 
-        $request->user()->create($validated);
+        $request->team()->create($validated);
 
-        return Inertia::render('team.create');
+        return redirect(route('team.index'));
     }
 
     /**

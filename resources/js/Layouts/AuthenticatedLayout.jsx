@@ -29,14 +29,14 @@ export default function Authenticated({ auth, header, children }) {
                                     Dashboard
                                 </NavLink>
                                 <NavLink
-                                    href={route("player.create")}
-                                    active={route().current("player.create")}
+                                    href={route("player.index")}
+                                    active={route().current("player.index")}
                                 >
                                     Player
                                 </NavLink>
                                 <NavLink
-                                    href={route("team.create")}
-                                    active={route().current("team.create")}
+                                    href={route("team.index")}
+                                    active={route().current("team.index")}
                                 >
                                     Team
                                 </NavLink>                                
@@ -145,14 +145,14 @@ export default function Authenticated({ auth, header, children }) {
                             Dashboard
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
-                            href={route("player.create")}
-                            active={route().current("player.create")}
+                            href={route("player.index")}
+                            active={route().current("player.index")}
                         >
                             Player
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
-                            href={route("team.create")}
-                            active={route().current("team.create")}
+                            href={route("team.index")}
+                            active={route().current("team.index")}
                         >
                             Team
                         </ResponsiveNavLink>

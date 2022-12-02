@@ -11,7 +11,7 @@ export default function Create({ auth }) {
 
     const submit = (e) => {
         e.preventDefault();
-        post(route("player.store"), { onSuccess: () => reset() });
+        post(route("team.store"), { onSuccess: () => reset() });
     };
 
     return (

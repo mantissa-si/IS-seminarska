@@ -38,11 +38,19 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('player', PlayerController::class)
-    ->only(['index', 'store', 'create'])
-    ->middleware(['auth', 'verified']);
+    ->only('index')
+    ->middleware('auth');
+
+Route::resource('player', PlayerController::class)
+    ->only(['store', 'create'])
+    ->middleware(['admin']);
 
 Route::resource('team', TeamController::class)
-    ->only(['index', 'store', 'create'])
-    ->middleware(['auth', 'verified']);
+    ->only('index')
+    ->middleware('auth');
+
+Route::resource('team', TeamController::class)
+    ->only(['store', 'create'])
+    ->middleware(['admin']);
 
 require __DIR__ . '/auth.php';

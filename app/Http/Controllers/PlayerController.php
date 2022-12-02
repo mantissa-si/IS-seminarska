@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Player;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -15,7 +16,7 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Player/Index', []);
     }
 
     /**
@@ -41,9 +42,9 @@ class PlayerController extends Controller
             'surname' => 'required|string|max:255',
         ]);
 
-        $request->user()->team()->player()->create($validated);
+        $request->player()->create($validated);
  
-        return redirect(route('chirps.create'));
+        return redirect(route('player.create'));
     }
 
     /**
