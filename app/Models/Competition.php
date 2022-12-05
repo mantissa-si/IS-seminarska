@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Team extends Model
+class Competition extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'country',
-        'competition_id'
+        'title',
+        'start_date',
+        'end_date'
     ];
 }

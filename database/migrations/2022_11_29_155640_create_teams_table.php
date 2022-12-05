@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('name');
+            $table->string('country');
+            $table->foreignId('competition_id');
             $table->timestamps();
+
+            $table->foreign('competition_id')->references('id')->on('competitions');
         });
     }
 
