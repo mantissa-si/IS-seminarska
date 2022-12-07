@@ -20,27 +20,6 @@ export default function Admin({ auth, header, children }) {
                                     <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
                                 </Link>
                             </div>
-
-                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink
-                                    href={route("dashboard")}
-                                    active={route().current("dashboard")}
-                                >
-                                    Dashboard
-                                </NavLink>
-                                <NavLink
-                                    href={route("player.index")}
-                                    active={route().current("player.index")}
-                                >
-                                    Player
-                                </NavLink>
-                                <NavLink
-                                    href={route("team.index")}
-                                    active={route().current("team.index")}
-                                >
-                                    Team
-                                </NavLink>                                
-                            </div>
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ml-6">
@@ -137,27 +116,6 @@ export default function Admin({ auth, header, children }) {
                         " sm:hidden"
                     }
                 >
-                    <div className="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink
-                            href={route("dashboard")}
-                            active={route().current("dashboard")}
-                        >
-                            Dashboard
-                        </ResponsiveNavLink>
-                        <ResponsiveNavLink
-                            href={route("player.index")}
-                            active={route().current("player.index")}
-                        >
-                            Player
-                        </ResponsiveNavLink>
-                        <ResponsiveNavLink
-                            href={route("team.index")}
-                            active={route().current("team.index")}
-                        >
-                            Team
-                        </ResponsiveNavLink>
-                    </div>
-
                     <div className="pt-4 pb-1 border-t border-gray-200">
                         <div className="px-4">
                             <div className="font-medium text-base text-gray-800">
@@ -183,15 +141,6 @@ export default function Admin({ auth, header, children }) {
                     </div>
                 </div>
             </nav>
-
-            {header && (
-                <header className="bg-white shadow">
-                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {header}
-                    </div>
-                </header>
-            )}
-
             <main>{children}</main>
         </div>
     );
