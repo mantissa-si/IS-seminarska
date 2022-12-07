@@ -18,4 +18,14 @@ class PlayerGame extends Model
         'player_id',
         "game_id"
     ];
+
+    public function player()
+    {
+        return $this->belongsTo(Player::class);
+    }
+
+    public function game()
+    {
+        return $this->belongsTo(Game::class);
+    }
 }

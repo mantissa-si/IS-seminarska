@@ -14,4 +14,14 @@ class Competition extends Model
         'start_date',
         'end_date'
     ];
+
+    public function teams()
+    {
+        return $this->hasMany(Team::class);
+    }
+
+    public function games()
+    {
+        return $this->hasMany(Game::class);
+    }
 }

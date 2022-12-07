@@ -26,11 +26,38 @@ class Game extends Model
     ];
 
 
-    public function getAwayScore() {
+    public function getAwayScore()
+    {
         return $this->awayPoints1Q + $this->awayPoints2Q + $this->awayPoints3Q + $this->awayPoints4Q;
     }
 
-    public function getHomeScore() {
+    public function getHomeScore()
+    {
         return $this->homePoints1Q + $this->homePoints2Q + $this->homePoints3Q + $this->homePoints4Q;
+    }
+
+    public function players()
+    {
+        return $this->hasMany(PlayerGame::class);
+    }
+
+    public function competition()
+    {
+        return $this->belongsTo(Competition::class);
+    }
+
+    public function homeTeam()
+    {
+        return $this->belongsTo(Team::class);
+    }
+
+    public function awayTeam()
+    {
+        return $this->belongsTo(Team::class);
+    }
+
+    public function referee()
+    {
+        return $this->belongsTo(Referee::class);
     }
 }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('surname');
             $table->integer('number');
-            $table->integer('nationality');
+            $table->string('nationality');
             $table->foreignId('team_id');
             $table->timestamps();
 

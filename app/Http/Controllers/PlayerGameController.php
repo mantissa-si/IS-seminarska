@@ -35,7 +35,20 @@ class PlayerGameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'minutes_played' => 'numeric',
+            'points' => 'numeric',
+            'assists' => 'numeric',
+            'rebounds' => 'numeric',
+            'blocks' => 'numeric',
+            'player_id' => 'numeric',
+            "game_id" => 'numeric'
+        ]);
+
+        $playerGame = PlayerGame::create($request->all());
+        $playerGame->save();
+
+        redirect(route('dashboard'));
     }
 
     /**

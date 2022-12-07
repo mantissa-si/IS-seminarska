@@ -18,7 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('nationality');
+            $table->foreignId('team_id');
             $table->timestamps();
+
+            $table->foreign('team_id')->references('id')->on('teams');
         });
     }
 
