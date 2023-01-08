@@ -7,11 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Referee extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $fillable = [
-      'name',
-      'surname',
-      'nationality',
-    ];
+  protected $fillable = [
+    'name',
+    'surname',
+    'nationality'
+  ];
+
+  public function games()
+  {
+    return $this->hasMany(Game::class);
+  }
 }

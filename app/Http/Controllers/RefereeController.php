@@ -35,7 +35,21 @@ class RefereeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name',
+            'surname',
+            'nationality'
+        ]);
+
+        $referee = new Referee();
+
+        $referee->name = $request->name;
+        $referee->surname = $request->surname;
+        $referee->nationality = $request->nationality;
+
+        $referee->save();
+
+        redirect(route('referee.index'));
     }
 
     /**

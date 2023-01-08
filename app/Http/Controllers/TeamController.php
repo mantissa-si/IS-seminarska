@@ -6,6 +6,7 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\DB;
 
 class TeamController extends Controller
 {
@@ -37,11 +38,18 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $name = $request->validate([
             'name' => 'required|string|max:255',
+            'country' => 'required|string|max:255',
+            'competition' => 'required|string|max:255',
         ]);
 
-        $request->team()->create($validated);
+        $team = new Team();
+        $team->name = $request->name;
+        $team->country = $request->country;
+        $team->competition_id = DB::table('competitions')->where('title', $request->competition)->value('id');
+
+        $team->save();
 
         return redirect(route('team.index'));
     }
@@ -54,7 +62,7 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        //
+        
     }
 
     /**

@@ -35,7 +35,17 @@ class CompetitionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date'
+        ]);
+
+        $comp = Competition::create($request->all());
+
+        $comp->save();
+
+        return redirect(route('dashboard'));
     }
 
     /**

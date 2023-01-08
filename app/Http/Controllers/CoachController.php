@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Coach;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CoachController extends Controller
 {
@@ -35,7 +36,22 @@ class CoachController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'nationality' => 'required|string|max:255',
+            'team' => 'required|string|max:255'
+        ]);
+
+        $coach = new Coach();
+        $coach->name = $request->name;
+        $coach->surname = $request->surname;
+        $coach->nationality = $request->nationality;
+        $coach->team_id = DB::table('teams')->where('name', $request->team)->value('id');
+
+        $coach->save();
+
+        return redirect(route('coach.index'));
     }
 
     /**

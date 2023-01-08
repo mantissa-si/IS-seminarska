@@ -6,6 +6,7 @@ use App\Models\Player;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\DB;
 
 class PlayerController extends Controller
 {
@@ -40,9 +41,18 @@ class PlayerController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
+            'number' => 'required|numeric',
+            'nationality' => 'required|string|max:255',
         ]);
 
-        $request->player()->create($validated);
+        $player = new Player();
+        $player->name = $request->name;
+        $player->surname = $request->surname;
+        $player->number = $request->number;
+        $player->nationality = $request->nationality;
+        $player->team_id = DB::table('teams')->where('name', $request->team)->value('id');
+
+        $player->save();
  
         return redirect(route('player.create'));
     }

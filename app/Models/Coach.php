@@ -12,6 +12,12 @@ class Coach extends Model
     protected $fillable = [
         'name',
         'surname',
-        'nationality'
+        'nationality',
+        'team_id'
     ];
+
+    public function team()
+    {
+        return $this->hasOne(Team::class, 'id', 'team_id');
+    }
 }

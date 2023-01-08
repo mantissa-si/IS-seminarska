@@ -16,4 +16,15 @@ class Player extends Model
         'nationality',
         'team_id'
     ];
+
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
+
+    public function game()
+    {
+        return $this->hasMany(PlayerGame::class);
+    }
 }
