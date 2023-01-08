@@ -4,11 +4,12 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
     plugins: [
-        laravel([
-            'resources/js/swagger.js',
-        ],
+        laravel(
         {
-            input: 'resources/js/app.jsx',
+            input: [ 
+                'resources/js/app.jsx',
+                'resources/js/swagger',
+            ],
             refresh: true,
         }),
         react(),
