@@ -11,7 +11,7 @@ export default defineConfig({
         {
             input: [ 
                 'resources/js/app.jsx',
-                'resources/js/swagger',
+                'resources/js/swagger.js',
             ],
             refresh: true,
         }),
