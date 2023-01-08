@@ -7,10 +7,7 @@ export default defineConfig({
         chunkSizeWarningLimit: 1600,
     },
     plugins: [
-        laravel([
-            'resources/js/swagger.js',
-        ],
-        {
+        laravel ({
             input: [ 
                 'resources/js/app.jsx',
                 'resources/js/swagger.js',
