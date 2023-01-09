@@ -9,6 +9,19 @@ Z statistiko košarkarskih tekem bi pomagali digitalizaciji košarke v Sloveniji
 - **frontend:** React
 - **database:** PostgreSQL
 
+### Delovanje spletne aplikacije
+API server je narejen z frameworkom Laravel, ta se pogovarja s postgresql podatkovno bazo. 
+
+### Delo posameznih članov
+Tim Rekelj: postavitev strani na server in povezava z domeno, pomoč pri API serverju, frontend
+Andraž Adamič: Gradnja podatkovne baze, ogrodje API serverja, frontend
+
+### Podatkovni model podatkovne baze
+![Podatkovna baza](/docs/images/Database.png)
+![Avtorizacija](/docs/images/AuthDB.png)
+
+## Razvoj spletne aplikacije
+
 ### Potrebe za zaganjanje spletne strani
 
 - php (tested on version 8.1.13)

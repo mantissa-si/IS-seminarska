@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: IS Seminarska
   description: Here goes description
-  version: 0.1.9
+  version: 0.0.1
 
 servers:
   - url: http://localhost:8000/api
@@ -10,16 +10,961 @@ servers:
   - url: http://testing.andrazadamic.si/api
     description: production server
 
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+
 paths:
-  /users:
+  /coaches:
     get:
-      summary: Returns a list of users.
+      security: []
+      tags:
+        - Coaches
+      summary: Return a list of coaches.
       responses:
         '200': 
-          description: A JSON array of user names
+          description: A JSON array of coaches
           content:
             application/json:
               schema: 
                 type: array
-                items: 
+                items:
                   type: string
+    post:
+      tags:
+        - Coaches
+      summary: Create new coach.
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          example: John
+        - in: query
+          name: surname
+          schema:
+            type: string
+          example: Doe
+        - in: query
+          name: nationality
+          schema:
+            type: string
+          example: Slovene
+      responses:
+        '200': 
+          description: Created coach
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+  /coaches/{id}:
+    get:
+      security: []
+      tags:
+        - Coaches
+      summary: Return a specific coach.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        '200': 
+          description: Chosen coach
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    put:
+      tags:
+        - Coaches
+      summary: Edit existing coach.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+        - in: query
+          name: name
+          schema:
+            type: string
+          example: John
+        - in: query
+          name: surname
+          schema:
+            type: string
+          example: Doe
+        - in: query
+          name: nationality
+          schema:
+            type: string
+          example: Slovene
+      responses:
+        '200': 
+          description: Edited coach
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    delete:
+      tags:
+        - Coaches
+      summary: Return a specific coach.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        '200': 
+          description: Successful deletion
+
+  /competitions:
+    get:
+      security: []
+      tags:
+        - Competitions
+      summary: Return a list of competitions.
+      responses:
+        '200': 
+          description: A JSON array of competitions
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    post:
+      tags:
+        - Competitions
+      summary: Create new competition.
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          example: Competition 1
+        - in: query
+          name: start_date
+          schema:
+            type: string
+          example: 1.1.1970
+        - in: query
+          name: end_date
+          schema:
+            type: string
+          example: 10.1.1970
+      responses:
+        '200': 
+          description: Created competition
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+  /competitions/{id}:
+    get:
+      security: []
+      tags:
+        - Competitions
+      summary: Return a specific competition.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        '200': 
+          description: Specific competition
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    put:
+      tags:
+        - Competitions
+      summary: Edit existing competition.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+        - in: query
+          name: name
+          schema:
+            type: string
+          example: Competition 1
+        - in: query
+          name: start_date
+          schema:
+            type: string
+          example: 1.1.1970
+        - in: query
+          name: end_date
+          schema:
+            type: string
+          example: 10.1.1970
+      responses:
+        '200': 
+          description: Edited competition
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    delete:
+      tags:
+        - Competitions
+      summary: Delete competition.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        '200': 
+          description: Successful deletion
+  /games:
+    get:
+      security: []
+      tags:
+        - Games
+      summary: Return a list of games.
+      responses:
+        '200': 
+          description: A JSON array of games
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    post:
+      tags:
+        - Games
+      summary: Create new game.
+      parameters:
+        - in: query
+          name: date
+          schema:
+            type: string
+          example: 1.1.1970
+        - in: query
+          name: homePointsQ1
+          schema:
+            type: number
+          example: 12
+        - in: query
+          name: awayPointsQ1
+          schema:
+            type: number
+          example: 13
+        - in: query
+          name: homePointsQ2
+          schema:
+            type: number
+          example: 14
+        - in: query
+          name: awayPointsQ2
+          schema:
+            type: number
+          example: 15
+        - in: query
+          name: homePointsQ3
+          schema:
+            type: number
+          example: 16
+        - in: query
+          name: awayPointsQ3
+          schema:
+            type: number
+          example: 17
+        - in: query
+          name: homePointsQ4
+          schema:
+            type: number
+          example: 18
+        - in: query
+          name: awayPointsQ4
+          schema:
+            type: number
+          example: 19
+        - in: query
+          name: home_team
+          schema:
+            type: number
+          example: 1
+        - in: query
+          name: away_team
+          schema:
+            type: number
+          example: 2
+        - in: query
+          name: refereee_id
+          schema:
+            type: number
+          example: 3
+        - in: query
+          name: competition_id
+          schema:
+            type: number
+          example: 4
+      responses:
+        '200': 
+          description: Created game
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+  /games/{id}:
+    get:
+      security: []
+      tags:
+        - Games
+      summary: Return a specific game.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        '200': 
+          description: Specific game
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    put:
+      tags:
+        - Games
+      summary: Edit existing game.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+        - in: query
+          name: date
+          schema:
+            type: string
+          example: 1.1.1970
+        - in: query
+          name: homePointsQ1
+          schema:
+            type: number
+          example: 12
+        - in: query
+          name: awayPointsQ1
+          schema:
+            type: number
+          example: 13
+        - in: query
+          name: homePointsQ2
+          schema:
+            type: number
+          example: 14
+        - in: query
+          name: awayPointsQ2
+          schema:
+            type: number
+          example: 15
+        - in: query
+          name: homePointsQ3
+          schema:
+            type: number
+          example: 16
+        - in: query
+          name: awayPointsQ3
+          schema:
+            type: number
+          example: 17
+        - in: query
+          name: homePointsQ4
+          schema:
+            type: number
+          example: 18
+        - in: query
+          name: awayPointsQ4
+          schema:
+            type: number
+          example: 19
+        - in: query
+          name: home_team
+          schema:
+            type: number
+          example: 1
+        - in: query
+          name: away_team
+          schema:
+            type: number
+          example: 2
+        - in: query
+          name: refereee_id
+          schema:
+            type: number
+          example: 3
+        - in: query
+          name: competition_id
+          schema:
+            type: number
+          example: 4
+      responses:
+        '200': 
+          description: Edited game
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    delete:
+      tags:
+        - Games
+      summary: Delete game.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        '200': 
+          description: Successful deletion
+
+  /players:
+    get:
+      security: []
+      tags:
+        - Players
+      summary: Return a list of players.
+      responses:
+        '200': 
+          description: A JSON array of players
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    post:
+      tags:
+        - Players
+      summary: Create new player.
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          example: John
+        - in: query
+          name: surname
+          schema:
+            type: string
+          example: Doe
+        - in: query
+          name: number
+          schema:
+            type: number
+          example: 13
+        - in: query
+          name: nationality
+          schema:
+            type: string
+          example: Slovene
+        - in: query
+          name: team_id
+          schema:
+            type: number
+          example: 1
+      responses:
+        '200': 
+          description: Created player
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+  /players/{id}:
+    get:
+      security: []
+      tags:
+        - Players
+      summary: Return a specific player.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        '200': 
+          description: Chosen player
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    put:
+      tags:
+        - Players
+      summary: Edit existing player.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+        - in: query
+          name: name
+          schema:
+            type: string
+          example: John
+        - in: query
+          name: surname
+          schema:
+            type: string
+          example: Doe
+        - in: query
+          name: number
+          schema:
+            type: number
+          example: 13
+        - in: query
+          name: nationality
+          schema:
+            type: string
+          example: Slovene
+        - in: query
+          name: team_id
+          schema:
+            type: number
+          example: 1
+      responses:
+        '200': 
+          description: Edited player
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    delete:
+      tags:
+        - Players
+      summary: Delete player.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        '200': 
+          description: Successful deletion
+
+  /playergames:
+    get:
+      security: []
+      tags:
+        - Player games
+      summary: Return a list of player games.
+      responses:
+        '200': 
+          description: A JSON array of player games
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    post:
+      tags:
+        - Player games
+      summary: Create new player game.
+      parameters:
+        - in: query
+          name: minutes_played
+          schema:
+            type: number
+          example: 42
+        - in: query
+          name: points
+          schema:
+            type: number
+          example: 10
+        - in: query
+          name: assists
+          schema:
+            type: number
+          example: 11
+        - in: query
+          name: rebounds
+          schema:
+            type: number
+          example: 12
+        - in: query
+          name: blocks
+          schema:
+            type: number
+          example: 5
+        - in: query
+          name: player_id
+          schema:
+            type: number
+          example: 2
+        - in: query
+          name: game_id
+          schema:
+            type: number
+          example: 1
+      responses:
+        '200': 
+          description: Created player game
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+  /playergames/{id}:
+    get:
+      security: []
+      tags:
+        - Player games
+      summary: Return a specific player game.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        '200': 
+          description: Chosen player game
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    put:
+      tags:
+        - Player games
+      summary: Edit existing player game.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+        - in: query
+          name: minutes_played
+          schema:
+            type: number
+          example: 42
+        - in: query
+          name: points
+          schema:
+            type: number
+          example: 10
+        - in: query
+          name: assists
+          schema:
+            type: number
+          example: 11
+        - in: query
+          name: rebounds
+          schema:
+            type: number
+          example: 12
+        - in: query
+          name: blocks
+          schema:
+            type: number
+          example: 5
+        - in: query
+          name: player_id
+          schema:
+            type: number
+          example: 2
+        - in: query
+          name: game_id
+          schema:
+            type: number
+          example: 1
+      responses:
+        '200': 
+          description: Edited player game
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    delete:
+      tags:
+        - Player games
+      summary: Delete player game.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        '200': 
+          description: Successful deletion
+          
+  /referees:
+    get:
+      security: []
+      tags:
+        - Referees
+      summary: Return a list of referees.
+      responses:
+        '200': 
+          description: A JSON array of referees
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    post:
+      tags:
+        - Referees
+      summary: Create new referee.
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          example: John
+        - in: query
+          name: surname
+          schema:
+            type: string
+          example: Doe
+        - in: query
+          name: nationality
+          schema:
+            type: string
+          example: Slovene
+      responses:
+        '200': 
+          description: Created referee
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+  /referees/{id}:
+    get:
+      security: []
+      tags:
+        - Referees
+      summary: Return a specific referee.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        '200': 
+          description: Chosen referee
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    put:
+      tags:
+        - Referees
+      summary: Edit existing referee.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+        - in: query
+          name: name
+          schema:
+            type: string
+          example: John
+        - in: query
+          name: surname
+          schema:
+            type: string
+          example: Doe
+        - in: query
+          name: nationality
+          schema:
+            type: string
+          example: Slovene
+      responses:
+        '200': 
+          description: Edited referee
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    delete:
+      tags:
+        - Referees
+      summary: Return a specific referee.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        '200': 
+          description: Successful deletion
+
+  /teams:
+    get:
+      security: []
+      tags:
+        - Teams
+      summary: Return a list of teams.
+      responses:
+        '200': 
+          description: A JSON array of teams
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    post:
+      tags:
+        - Teams
+      summary: Create new team.
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          example: Team 1
+        - in: query
+          name: country
+          schema:
+            type: string
+          example: Slovenia
+        - in: query
+          name: competition_id
+          schema:
+            type: number
+          example: 12
+      responses:
+        '200': 
+          description: Created team
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+  /teams/{id}:
+    get:
+      security: []
+      tags:
+        - Teams
+      summary: Return a specific team.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        '200': 
+          description: Specific team
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    put:
+      tags:
+        - Teams
+      summary: Edit existing team.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+        - in: query
+          name: name
+          schema:
+            type: string
+          example: Team 1
+        - in: query
+          name: country
+          schema:
+            type: string
+          example: Slovenia
+        - in: query
+          name: competition_id
+          schema:
+            type: number
+          example: 12
+      responses:
+        '200': 
+          description: Edited team
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+    delete:
+      tags:
+        - Teams
+      summary: Delete team.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        '200': 
+          description: Successful deletion
+security:
+  - basicAuth: []

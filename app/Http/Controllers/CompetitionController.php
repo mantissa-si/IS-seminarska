@@ -45,7 +45,7 @@ class CompetitionController extends Controller
 
         $comp->save();
 
-        return redirect(route('dashboard'));
+        return $comp;
     }
 
     /**
