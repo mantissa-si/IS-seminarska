@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Referee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RefereeController extends Controller
 {
@@ -14,7 +15,8 @@ class RefereeController extends Controller
      */
     public function index()
     {
-        //
+        $referees = DB::table('referees')->select()->get();
+        return response($referees);
     }
 
     /**

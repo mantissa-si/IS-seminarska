@@ -15,7 +15,8 @@ class CoachController extends Controller
      */
     public function index()
     {
-        //
+        $coaches = DB::table('coaches')->select()->get();
+        return response($coaches);
     }
 
     /**
@@ -60,10 +61,11 @@ class CoachController extends Controller
      * @param  \App\Models\Coach  $coach
      * @return \Illuminate\Http\Response
      */
-    public function show(Coach $coach)
+    public function show(Request $request,$id)
     {
-        //
+        return response(DB::table('coaches')->select()->where('id', $id)->get());
     }
+
 
     /**
      * Show the form for editing the specified resource.

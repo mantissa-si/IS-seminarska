@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PlayerGame;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PlayerGameController extends Controller
 {
@@ -14,7 +15,8 @@ class PlayerGameController extends Controller
      */
     public function index()
     {
-        //
+        $playergames = DB::table('player_game')->select()->get();
+        return response($playergames);
     }
 
     /**
@@ -57,9 +59,10 @@ class PlayerGameController extends Controller
      * @param  \App\Models\PlayerGame  $playerGame
      * @return \Illuminate\Http\Response
      */
-    public function show(PlayerGame $playerGame)
+    public function show(Request $request,$id)
     {
-        //
+        $response = DB::table('player_game')->select()->where('id', $id)->get();
+        return response($response);
     }
 
     /**

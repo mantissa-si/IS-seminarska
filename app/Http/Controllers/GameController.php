@@ -15,7 +15,8 @@ class GameController extends Controller
      */
     public function index()
     {
-        //
+        $games = DB::table('games')->select()->get();
+        return response($games);
     }
 
     /**
@@ -79,9 +80,10 @@ class GameController extends Controller
      * @param  \App\Models\Game  $game
      * @return \Illuminate\Http\Response
      */
-    public function show(Game $game)
+    public function show(Request $request,$id)
     {
-        //
+        return response(DB::table('games')->select()->where('id', $id)->get());
+;
     }
 
     /**

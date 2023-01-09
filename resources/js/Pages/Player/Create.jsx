@@ -8,6 +8,9 @@ export default function Create({ auth }) {
     const { data, setData, post, processing, reset, errors } = useForm({
         name: "",
         surname: "",
+        number: "",
+        nationality: "",
+        team: "",
     });
 
     const submit = (e) => {
@@ -32,6 +35,24 @@ export default function Create({ auth }) {
                         placeholder="Surname"
                         className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm p-2"
                         onChange={(e) => setData("surname", e.target.value)}
+                    ></input>
+                    <input
+                        value={data.number}
+                        placeholder="Number"
+                        className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm p-2"
+                        onChange={(e) => setData("number", e.target.value)}
+                    ></input>
+                    <input
+                        value={data.nationality}
+                        placeholder="Nationality"
+                        className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm p-2"
+                        onChange={(e) => setData("nationality", e.target.value)}
+                    ></input>
+                    <input
+                        value={data.team}
+                        placeholder="Team"
+                        className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm p-2"
+                        onChange={(e) => setData("team", e.target.value)}
                     ></input>
                     <InputError message={errors.message} className="mt-2" />
                     <PrimaryButton className="mt-4" processing={processing}>Create</PrimaryButton>

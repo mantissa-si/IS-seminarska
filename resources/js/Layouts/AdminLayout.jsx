@@ -29,14 +29,14 @@ export default function Admin({ auth, header, children }) {
                                     Dashboard
                                 </NavLink>
                                 <NavLink
-                                    href={route("player.index")}
-                                    active={route().current("player.index")}
+                                    href={route("player.create")}
+                                    active={route().current("player.create")}
                                 >
                                     Player
                                 </NavLink>
                                 <NavLink
-                                    href={route("team.index")}
-                                    active={route().current("team.index")}
+                                    href={route("team.create")}
+                                    active={route().current("team.create")}
                                 >
                                     Team
                                 </NavLink>                                

@@ -17,7 +17,8 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Team/Index', []);
+        $teams = DB::table('teams')->select()->get();
+        return response($teams);
     }
 
     /**
@@ -27,7 +28,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Team/Create', []);
+        return Inertia::render('Team/Create');
     }
 
     /**

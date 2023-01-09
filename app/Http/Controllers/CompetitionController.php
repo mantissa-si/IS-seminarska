@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\Competition;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class CompetitionController extends Controller
      */
     public function index()
     {
-        //
+        $competitions = DB::table('competitions')->select()->get();
+        return response($competitions);
     }
 
     /**
@@ -41,11 +43,14 @@ class CompetitionController extends Controller
             'end_date' => 'required|date'
         ]);
 
-        $comp = Competition::create($request->all());
+        $comp = new Competition();
+        $comp->title = $request->title;
+        $comp->start_date = $request->start_date;
+        $comp->end_date = $request->end_date;
 
         $comp->save();
 
-        return $comp;
+        return redirect(route('competition.index'));
     }
 
     /**
@@ -54,9 +59,9 @@ class CompetitionController extends Controller
      * @param  \App\Models\Competition  $competition
      * @return \Illuminate\Http\Response
      */
-    public function show(Competition $competition)
+    public function show(Request $request,$id)
     {
-        //
+        return response(DB::table('competitions')->select()->where('id', $id)->get());
     }
 
     /**

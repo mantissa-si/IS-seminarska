@@ -7,6 +7,8 @@ import { useForm, Head } from "@inertiajs/inertia-react";
 export default function Create({ auth }) {
     const { data, setData, post, processing, reset, errors } = useForm({
         name: "",
+        country: "",
+        competition: "",
     });
 
     const submit = (e) => {
@@ -25,6 +27,18 @@ export default function Create({ auth }) {
                         placeholder="Name"
                         className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mb-2 p-2"
                         onChange={(e) => setData("name", e.target.value)}
+                    ></input>
+                    <input
+                        value={data.country}
+                        placeholder="Coountry"
+                        className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mb-2 p-2"
+                        onChange={(e) => setData("country", e.target.value)}
+                    ></input>
+                    <input
+                        value={data.competition}
+                        placeholder="Competition"
+                        className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mb-2 p-2"
+                        onChange={(e) => setData("competition", e.target.value)}
                     ></input>
                     <InputError message={errors.message} className="mt-2" />
                     <PrimaryButton className="mt-4" processing={processing}>Create</PrimaryButton>

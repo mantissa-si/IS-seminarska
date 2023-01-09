@@ -17,7 +17,8 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Player/Index', []);
+        $player = DB::table('players')->select()->get();
+        return response($player);
     }
 
     /**
@@ -27,7 +28,7 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Player/Create', []);
+        return Inertia::render('Player/Create');
     }
 
     /**
@@ -63,9 +64,9 @@ class PlayerController extends Controller
      * @param  \App\Models\Player  $player
      * @return \Illuminate\Http\Response
      */
-    public function show(Player $player)
+    public function show(Request $request,$id)
     {
-        //
+        return response(DB::table('players')->select()->where('id', $id)->get());
     }
 
     /**
